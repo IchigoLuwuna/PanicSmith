@@ -1315,7 +1315,7 @@ GameObject:
   - component: {fileID: 459921178}
   - component: {fileID: 459921183}
   m_Layer: 0
-  m_Name: Station1
+  m_Name: ForgingStation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
