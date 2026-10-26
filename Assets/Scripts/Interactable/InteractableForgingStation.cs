@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InteractableStation1 : MonoBehaviour, IInteractable
+public class InteractableForgingStation : MonoBehaviour, IInteractable
 {
     private GameState m_GameState;
 
