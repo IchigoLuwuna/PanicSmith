@@ -9,10 +9,23 @@ public class ForgingMinigameBarHitChecker : MonoBehaviour
     private GameObject m_Bar;
 
     [SerializeField]
-    private float countDown = 1f;
-    private float m_CountDown;
+    private int m_CompleteThreshold = 20;
+    public int completeThreshold
+    {
+        get { return m_CompleteThreshold; }
+    }
 
-    private bool m_Started = false;
+    private int m_AccumulatedPoints;
+    public int accumulatedPoints
+    {
+        get { return m_AccumulatedPoints; }
+    }
+
+    [SerializeField]
+    private float countdown = 1f;
+    private float m_Countdown;
+
+    private bool m_CountdownStarted = false;
 
     private GameState m_GameState;
 
@@ -23,33 +36,85 @@ public class ForgingMinigameBarHitChecker : MonoBehaviour
 
     private void OnEnable()
     {
-        m_CountDown = countDown;
-        m_Started = false;
+        Reset();
+        m_AccumulatedPoints = 0;
     }
 
     void FixedUpdate()
     {
-        if (!m_Started)
+        if (!m_CountdownStarted)
         {
             return;
         }
 
-        m_CountDown -= Time.deltaTime;
+        m_Countdown -= Time.deltaTime;
 
-        if (m_CountDown < 0.001f)
+        if (m_Countdown < 0.001f)
         {
             Check();
-            m_Started = false;
+            m_CountdownStarted = false;
         }
     }
 
     public void StartCheck()
     {
-        m_Started = true;
+        m_CountdownStarted = true;
+    }
+
+    private void Reset()
+    {
+        m_Countdown = countdown;
+        m_CountdownStarted = false;
     }
 
     private void Check()
     {
-        m_GameState.state = GameState.State.WorkShop;
+        RectTransform barRectTrans = m_Bar.GetComponent<RectTransform>();
+        Rect barRect = new Rect(
+            barRectTrans.localPosition.x + barRectTrans.rect.x,
+            barRectTrans.localPosition.y + barRectTrans.rect.y,
+            barRectTrans.rect.width,
+            barRectTrans.rect.height
+        );
+
+        RectTransform[] timingBarRectTranses = m_TimingBar.GetComponentsInChildren<RectTransform>();
+
+        GameObject barHit = null;
+
+        foreach (RectTransform timingBarRectTrans in timingBarRectTranses)
+        {
+            Rect timingRect = new Rect(
+                timingBarRectTrans.rect.x,
+                timingBarRectTrans.rect.y,
+                timingBarRectTrans.rect.width,
+                timingBarRectTrans.rect.height
+            );
+
+            if (barRect.Overlaps(timingRect))
+            {
+                barHit = timingBarRectTrans.gameObject;
+            }
+        }
+
+        // Miss
+        if (barHit == null)
+        {
+            m_GameState.state = GameState.State.WorkShop;
+            return;
+        }
+
+        int barHitValue = barHit.gameObject.GetComponent<ForgingMinigameTimingBarValue>().value;
+        Debug.Log(barHitValue);
+        m_AccumulatedPoints += barHitValue;
+
+        // Completed
+        if (m_AccumulatedPoints >= m_CompleteThreshold)
+        {
+            m_GameState.state = GameState.State.WorkShop;
+            return;
+        }
+
+        Reset();
+        m_Bar.gameObject.GetComponent<ForgingMinigameBarMovement>().Reset();
     }
 }

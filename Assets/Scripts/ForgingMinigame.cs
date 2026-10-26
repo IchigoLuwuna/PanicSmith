@@ -13,7 +13,7 @@ public class ForgingMinigame : MonoBehaviour
     private ForgingMinigameBarHitChecker m_ForgingMinigameBarHitChecker;
     private ForgingMinigameBarMovement m_ForgingMinigameBarMovement;
 
-    void Awake()
+    void Start()
     {
         m_GameState = FindFirstObjectByType<GameState>();
         m_ForgingMinigameBarHitChecker = FindFirstObjectByType<ForgingMinigameBarHitChecker>();

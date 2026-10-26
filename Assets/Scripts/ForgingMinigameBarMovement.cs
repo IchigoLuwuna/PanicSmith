@@ -33,12 +33,17 @@ public class ForgingMinigameBarMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        m_Time = Random.Range(0f, Mathf.PI * 2f);
-        m_Stop = false;
+        Reset();
     }
 
     public void Stop()
     {
         m_Stop = true;
+    }
+
+    public void Reset()
+    {
+        m_Time = Random.Range(0f, Mathf.PI * 2f);
+        m_Stop = false;
     }
 }
