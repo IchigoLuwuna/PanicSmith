@@ -1,0 +1,99 @@
+{
+    "version": 1,
+    "name": "MinigameInput",
+    "maps": [
+        {
+            "name": "Generic",
+            "id": "ca0ccd06-7d9a-4a06-8e0e-e18efddd3907",
+            "actions": [
+                {
+                    "name": "Primary",
+                    "type": "Button",
+                    "id": "7c471170-5c80-4856-9cf3-1fdaae7ce2ed",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "Secondary",
+                    "type": "Button",
+                    "id": "1e09b8ac-3315-491d-95a8-6bb94462653c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "Tertiary",
+                    "type": "Button",
+                    "id": "6ae4acdc-82a3-4ae6-8f68-02d1a0b845d9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "Exit",
+                    "type": "Button",
+                    "id": "e401a8b3-796b-4739-a908-670e8c92e962",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7cb96495-cd7e-4c54-9ccd-7874eeb90dc1",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Primary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "14b4c1f7-dde8-4ae5-8da3-1d9817dd9e35",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Secondary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "096f7570-a486-4e53-b3d0-284861962585",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tertiary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7ac1a8a4-6006-4392-8293-a653172a8332",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Exit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
