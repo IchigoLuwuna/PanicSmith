@@ -22,8 +22,11 @@ public class ForgingMinigameBarHitChecker : MonoBehaviour
     }
 
     [SerializeField]
-    private float countdown = 1f;
+    private float countdown = 0.5f;
     private float m_Countdown;
+
+    [SerializeField]
+    private float m_FinalCountdown = 1.5f;
 
     private bool m_CountdownStarted = false;
 
@@ -51,14 +54,18 @@ public class ForgingMinigameBarHitChecker : MonoBehaviour
 
         if (m_Countdown < 0.001f)
         {
-            Check();
             m_CountdownStarted = false;
-        }
-    }
 
-    public void StartCheck()
-    {
-        m_CountdownStarted = true;
+            // Completed
+            if (m_AccumulatedPoints >= m_CompleteThreshold)
+            {
+                m_GameState.state = GameState.State.WorkShop;
+                return;
+            }
+
+            Reset();
+            m_Bar.gameObject.GetComponent<ForgingMinigameBarMovement>().Reset();
+        }
     }
 
     private void Reset()
@@ -67,7 +74,7 @@ public class ForgingMinigameBarHitChecker : MonoBehaviour
         m_CountdownStarted = false;
     }
 
-    private void Check()
+    public void Check()
     {
         RectTransform barRectTrans = m_Bar.GetComponent<RectTransform>();
         Rect barRect = new Rect(
@@ -107,14 +114,16 @@ public class ForgingMinigameBarHitChecker : MonoBehaviour
         Debug.Log(barHitValue);
         m_AccumulatedPoints += barHitValue;
 
-        // Completed
+        StartCountdown();
+
         if (m_AccumulatedPoints >= m_CompleteThreshold)
         {
-            m_GameState.state = GameState.State.WorkShop;
-            return;
+            m_Countdown = m_FinalCountdown;
         }
+    }
 
-        Reset();
-        m_Bar.gameObject.GetComponent<ForgingMinigameBarMovement>().Reset();
+    private void StartCountdown()
+    {
+        m_CountdownStarted = true;
     }
 }

@@ -3388,6 +3388,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 921311620142231307, guid: 2bc179a211d5eb2e69ef7a2d06824efa, type: 3}
+      propertyPath: m_CompleteThreshold
+      value: 63
+      objectReference: {fileID: 0}
     - target: {fileID: 1408398306178371350, guid: 2bc179a211d5eb2e69ef7a2d06824efa, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

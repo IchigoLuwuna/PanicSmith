@@ -62,7 +62,7 @@ public class ForgingMinigame : MonoBehaviour
     private void HandlePrimaryAction(InputAction.CallbackContext context)
     {
         m_ForgingMinigameBarMovement.Stop();
-        m_ForgingMinigameBarHitChecker.StartCheck();
+        m_ForgingMinigameBarHitChecker.Check();
     }
 
     private void HandleExitAction(InputAction.CallbackContext context)
