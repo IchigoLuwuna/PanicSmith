@@ -11,11 +11,10 @@ public class TimerHUD : MonoBehaviour
 
     void Start()
     {
-        var timer = FindFirstObjectByType<Timer>();
-        m_LevelTimer = timer?.gameObject?.GetComponent<Timer>();
+        m_LevelTimer = FindFirstObjectByType<Timer>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Sync();
     }
@@ -26,10 +25,8 @@ public class TimerHUD : MonoBehaviour
         {
             return;
         }
-        else
-        {
-            SetTime(m_LevelTimer.time);
-        }
+
+        SetTime(m_LevelTimer.time);
     }
 
     private void SetTime(float time)
