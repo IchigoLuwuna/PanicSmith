@@ -7,11 +7,11 @@ public class ForgingMinigameProgressUI : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI m_ProgressLabel;
 
-    private ForgingMinigameBarHitChecker m_ForgingMinigame;
+    private ForgingMinigame m_ForgingMinigame;
 
     void Start()
     {
-        m_ForgingMinigame = FindFirstObjectByType<ForgingMinigameBarHitChecker>();
+        m_ForgingMinigame = FindFirstObjectByType<ForgingMinigame>();
     }
 
     void FixedUpdate()

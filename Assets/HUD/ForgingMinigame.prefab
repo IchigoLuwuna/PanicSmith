@@ -147,6 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1408398306178371350}
   - component: {fileID: 1522848314476244694}
+  - component: {fileID: 4686074816307476106}
   - component: {fileID: 921311620142231307}
   m_Layer: 5
   m_Name: ForgingMinigame
@@ -189,6 +190,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf8e8bcffa771064ba6969353ae3adff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ForgingMinigame
+  m_CompleteThreshold: 43
+  countdown: 0.3
+  m_FinalCountdown: 1
+--- !u!114 &4686074816307476106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569804874534297525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1b72662918c2fc75b3f9f96e2acd941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ForgingMinigameInput
   m_InputAsset: {fileID: -944628639613478452, guid: 8ee2b517528c0a6acb82851881be3251, type: 3}
 --- !u!114 &921311620142231307
 MonoBehaviour:
@@ -204,9 +220,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ForgingMinigameBarHitChecker
   m_TimingBar: {fileID: 7169577877383206010}
   m_Bar: {fileID: 2597164025890840679}
-  m_CompleteThreshold: 43
-  countdown: 0.5
-  m_FinalCountdown: 1.5
 --- !u!1 &1668136910456552237
 GameObject:
   m_ObjectHideFlags: 0

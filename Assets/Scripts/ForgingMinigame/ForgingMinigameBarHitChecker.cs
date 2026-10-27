@@ -8,73 +8,7 @@ public class ForgingMinigameBarHitChecker : MonoBehaviour
     [SerializeField]
     private GameObject m_Bar;
 
-    [SerializeField]
-    private int m_CompleteThreshold = 20;
-    public int completeThreshold
-    {
-        get { return m_CompleteThreshold; }
-    }
-
-    private int m_AccumulatedPoints;
-    public int accumulatedPoints
-    {
-        get { return m_AccumulatedPoints; }
-    }
-
-    [SerializeField]
-    private float countdown = 0.5f;
-    private float m_Countdown;
-
-    [SerializeField]
-    private float m_FinalCountdown = 1.5f;
-
-    private bool m_CountdownStarted = false;
-
-    private GameState m_GameState;
-
-    void Start()
-    {
-        m_GameState = FindFirstObjectByType<GameState>();
-    }
-
-    private void OnEnable()
-    {
-        Reset();
-        m_AccumulatedPoints = 0;
-    }
-
-    void FixedUpdate()
-    {
-        if (!m_CountdownStarted)
-        {
-            return;
-        }
-
-        m_Countdown -= Time.deltaTime;
-
-        if (m_Countdown < 0.001f)
-        {
-            m_CountdownStarted = false;
-
-            // Completed
-            if (m_AccumulatedPoints >= m_CompleteThreshold)
-            {
-                m_GameState.state = GameState.State.WorkShop;
-                return;
-            }
-
-            Reset();
-            m_Bar.gameObject.GetComponent<ForgingMinigameBarMovement>().Reset();
-        }
-    }
-
-    private void Reset()
-    {
-        m_Countdown = countdown;
-        m_CountdownStarted = false;
-    }
-
-    public void Check()
+    public int Check()
     {
         RectTransform barRectTrans = m_Bar.GetComponent<RectTransform>();
         Rect barRect = new Rect(
@@ -106,24 +40,11 @@ public class ForgingMinigameBarHitChecker : MonoBehaviour
         // Miss
         if (barHit == null)
         {
-            m_GameState.state = GameState.State.WorkShop;
-            return;
+            return 0;
         }
 
         int barHitValue = barHit.gameObject.GetComponent<ForgingMinigameTimingBarValue>().value;
         Debug.Log(barHitValue);
-        m_AccumulatedPoints += barHitValue;
-
-        StartCountdown();
-
-        if (m_AccumulatedPoints >= m_CompleteThreshold)
-        {
-            m_Countdown = m_FinalCountdown;
-        }
-    }
-
-    private void StartCountdown()
-    {
-        m_CountdownStarted = true;
+        return barHitValue;
     }
 }

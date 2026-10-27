@@ -1,17 +1,32 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class ForgingMinigame : MonoBehaviour
 {
-    [SerializeField]
-    private InputActionAsset m_InputAsset;
-
-    private InputAction m_PrimaryAction;
-    private InputAction m_ExitAction;
-
     private GameState m_GameState;
     private ForgingMinigameBarHitChecker m_ForgingMinigameBarHitChecker;
     private ForgingMinigameBarMovement m_ForgingMinigameBarMovement;
+
+    [SerializeField]
+    private int m_CompleteThreshold = 20;
+    public int completeThreshold
+    {
+        get { return m_CompleteThreshold; }
+    }
+
+    private int m_AccumulatedPoints;
+    public int accumulatedPoints
+    {
+        get { return m_AccumulatedPoints; }
+    }
+
+    [SerializeField]
+    private float countdown = 0.5f;
+    private float m_Countdown;
+
+    [SerializeField]
+    private float m_FinalCountdown = 1.5f;
+
+    private bool m_CountdownStarted = false;
 
     void Start()
     {
@@ -19,53 +34,66 @@ public class ForgingMinigame : MonoBehaviour
         m_ForgingMinigameBarHitChecker = FindFirstObjectByType<ForgingMinigameBarHitChecker>();
         m_ForgingMinigameBarMovement = FindFirstObjectByType<ForgingMinigameBarMovement>();
 
-        m_PrimaryAction = m_InputAsset.FindActionMap("Generic").FindAction("Primary");
-        if (m_ExitAction == null)
-        {
-            Debug.Log("Could not find primary action");
-        }
-        m_PrimaryAction.performed += HandlePrimaryAction;
-
-        m_ExitAction = m_InputAsset.FindActionMap("Generic").FindAction("Exit");
-        if (m_ExitAction == null)
-        {
-            Debug.Log("Could not find exit action");
-        }
-        m_ExitAction.performed += HandleExitAction;
+        Reset();
     }
 
-    protected void OnDestroy()
+    void OnEnable()
     {
-        m_ExitAction.performed -= HandleExitAction;
+        Reset();
     }
 
-    private void OnEnable()
+    void FixedUpdate()
     {
-        if (m_InputAsset == null)
+        if (!m_CountdownStarted)
         {
             return;
         }
 
-        m_InputAsset.Enable();
-    }
+        m_Countdown -= Time.deltaTime;
 
-    private void OnDisable()
-    {
-        if (m_InputAsset == null)
+        if (m_Countdown < 0.001f)
         {
-            return;
-        }
+            m_CountdownStarted = false;
 
-        m_InputAsset.Disable();
+            Reset();
+            m_ForgingMinigameBarMovement.Reset();
+
+            if (m_AccumulatedPoints >= m_CompleteThreshold)
+            {
+                m_GameState.state = GameState.State.WorkShop;
+                return;
+            }
+        }
     }
 
-    private void HandlePrimaryAction(InputAction.CallbackContext context)
+    private void Reset()
+    {
+        m_CountdownStarted = false;
+        m_Countdown = countdown;
+    }
+
+    public void PrimaryAction()
     {
         m_ForgingMinigameBarMovement.Stop();
-        m_ForgingMinigameBarHitChecker.Check();
+        int accumulator = m_ForgingMinigameBarHitChecker.Check();
+
+        m_CountdownStarted = true;
+        m_Countdown = countdown;
+
+        if (accumulator == 0)
+        {
+            m_GameState.state = GameState.State.WorkShop;
+            return;
+        }
+        m_AccumulatedPoints += accumulator;
+
+        if (m_AccumulatedPoints >= m_CompleteThreshold)
+        {
+            m_Countdown = m_FinalCountdown;
+        }
     }
 
-    private void HandleExitAction(InputAction.CallbackContext context)
+    public void ExitAction()
     {
         m_GameState.state = GameState.State.WorkShop;
     }
