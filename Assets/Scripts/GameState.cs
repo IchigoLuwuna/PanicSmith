@@ -7,6 +7,7 @@ public class GameState : MonoBehaviour
     {
         WorkShop,
         ForgingStation,
+        DyeingStation,
     }
 
     private State m_State = State.WorkShop;
@@ -27,6 +28,9 @@ public class GameState : MonoBehaviour
 
     [SerializeField]
     private GameObject m_ForgingMinigame;
+
+    [SerializeField]
+    private GameObject m_DyeingMinigame;
 
     private bool m_GameWon = false;
     public bool gameWon
@@ -69,6 +73,12 @@ public class GameState : MonoBehaviour
                 m_PlayerCharacterController.enabled = false;
                 break;
             }
+            case State.DyeingStation:
+            {
+                m_DyeingMinigame.SetActive(true);
+                m_PlayerCharacterController.enabled = false;
+                break;
+            }
         }
     }
 
@@ -84,6 +94,12 @@ public class GameState : MonoBehaviour
             case State.ForgingStation:
             {
                 m_ForgingMinigame.SetActive(false);
+                m_PlayerCharacterController.enabled = true;
+                break;
+            }
+            case State.DyeingStation:
+            {
+                m_DyeingMinigame.SetActive(false);
                 m_PlayerCharacterController.enabled = true;
                 break;
             }

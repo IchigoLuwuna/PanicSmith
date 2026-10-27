@@ -20,7 +20,7 @@ public class ForgingMinigameInput : MonoBehaviour
         }
 
         m_PrimaryAction = m_InputAsset.FindActionMap("Generic").FindAction("Primary");
-        if (m_ExitAction == null)
+        if (m_PrimaryAction == null)
         {
             Debug.Log("Could not find primary action");
         }
