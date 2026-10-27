@@ -3,30 +3,27 @@ using UnityEngine;
 public class DyeingMinigame : MonoBehaviour
 {
     private GameState m_GameState;
+    private Inventory m_Inventory;
 
     void Start()
     {
         m_GameState = FindFirstObjectByType<GameState>();
-    }
-
-    void FixedUpdate()
-    {
-        ;
+        m_Inventory = FindFirstObjectByType<Inventory>();
     }
 
     public void PrimaryAction()
     {
-        Debug.Log("1");
+        m_Inventory.AddHandle(0);
     }
 
     public void SecondaryAction()
     {
-        Debug.Log("2");
+        m_Inventory.AddHandle(1);
     }
 
     public void TertiaryAction()
     {
-        Debug.Log("3");
+        m_Inventory.AddHandle(2);
     }
 
     public void ExitAction()

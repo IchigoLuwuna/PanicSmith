@@ -5,6 +5,7 @@ public class ForgingMinigame : MonoBehaviour
     private GameState m_GameState;
     private ForgingMinigameBarHitChecker m_ForgingMinigameBarHitChecker;
     private ForgingMinigameBarMovement m_ForgingMinigameBarMovement;
+    private Inventory m_Inventory;
 
     [SerializeField]
     private int m_CompleteThreshold = 20;
@@ -33,6 +34,7 @@ public class ForgingMinigame : MonoBehaviour
         m_GameState = FindFirstObjectByType<GameState>();
         m_ForgingMinigameBarHitChecker = FindFirstObjectByType<ForgingMinigameBarHitChecker>();
         m_ForgingMinigameBarMovement = FindFirstObjectByType<ForgingMinigameBarMovement>();
+        m_Inventory = FindFirstObjectByType<Inventory>();
 
         Reset();
     }
@@ -62,6 +64,7 @@ public class ForgingMinigame : MonoBehaviour
 
             if (m_AccumulatedPoints >= m_CompleteThreshold)
             {
+                m_Inventory.AddBlade(m_AccumulatedPoints - m_CompleteThreshold);
                 m_GameState.state = GameState.State.WorkShop;
                 return;
             }
