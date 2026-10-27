@@ -2,10 +2,23 @@ using UnityEngine;
 
 public class InteractableFrontDesk : MonoBehaviour, IInteractable
 {
+    private Inventory m_Inventory;
+
+    void Start()
+    {
+        m_Inventory = FindFirstObjectByType<Inventory>();
+    }
+
     public void Interact()
     {
-        Debug.Log("Front Desk Interacted");
+        if (!m_Inventory.hasSword)
+        {
+            return;
+        }
 
-        FindFirstObjectByType<GameState>().gameObject.GetComponent<GameState>().gameWon = true;
+        int quality = m_Inventory.swordBladeQuality;
+
+        m_Inventory.RemoveSword();
+        m_Inventory.AddMoney(quality);
     }
 }

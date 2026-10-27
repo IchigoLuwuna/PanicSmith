@@ -12,6 +12,8 @@ public class Inventory : MonoBehaviour
     private int m_SwordBladeQuality;
     private int m_SwordHandleColorID;
 
+    private int m_Money = 5;
+
     public bool hasBlade
     {
         get { return m_HasBlade; }
@@ -41,6 +43,11 @@ public class Inventory : MonoBehaviour
     public int swordHandleColorID
     {
         get { return m_SwordHandleColorID; }
+    }
+
+    public int money
+    {
+        get { return m_Money; }
     }
 
     public void AddSword()
@@ -78,5 +85,20 @@ public class Inventory : MonoBehaviour
     public void RemoveHandle()
     {
         m_HasHandle = false;
+    }
+
+    public void RemoveSword()
+    {
+        m_HasSword = false;
+    }
+
+    public void AddMoney(int amount)
+    {
+        m_Money += amount;
+    }
+
+    public void RemoveMoney(int amount)
+    {
+        m_Money -= amount;
     }
 }

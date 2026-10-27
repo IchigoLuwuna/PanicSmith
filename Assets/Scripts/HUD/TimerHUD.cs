@@ -33,7 +33,7 @@ public class TimerHUD : MonoBehaviour
     {
         if (m_TimerLabel != null)
         {
-            m_TimerLabel.text = $"Time: {time.ToString("#.0")}";
+            m_TimerLabel.text = $"Shift time left\n{time.ToString("#.0")}";
         }
     }
 }

@@ -25,12 +25,20 @@ public class GameState : MonoBehaviour
     private Timer m_LevelTimer;
     private PlayerCharacter m_PlayerCharacterController;
     private Health m_PlayerHealth;
+    private Inventory m_Inventory;
 
     [SerializeField]
     private GameObject m_ForgingMinigame;
 
     [SerializeField]
     private GameObject m_DyeingMinigame;
+
+    [SerializeField]
+    private int m_Quota = 100;
+    public int quota
+    {
+        get { return m_Quota; }
+    }
 
     private bool m_GameWon = false;
     public bool gameWon
@@ -56,6 +64,8 @@ public class GameState : MonoBehaviour
         {
             Debug.Log("Could not find health");
         }
+
+        m_Inventory = FindFirstObjectByType<Inventory>();
     }
 
     // On entering new state
@@ -122,11 +132,23 @@ public class GameState : MonoBehaviour
             SceneManager.LoadScene("WinScene");
         }
 
-        if (m_LevelTimer.time <= 0.001f)
+        if (m_Inventory.money <= 0)
         {
             m_PlayerHealth.Kill();
 
             SceneManager.LoadScene("GameOverScene");
+        }
+
+        if (m_LevelTimer.time <= 0.001f)
+        {
+            if (m_Inventory.money >= m_Quota)
+            {
+                SceneManager.LoadScene("WinScene");
+            }
+            else
+            {
+                SceneManager.LoadScene("GameOverScene");
+            }
         }
     }
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 public class InteractableForgingStation : MonoBehaviour, IInteractable
 {
     private GameState m_GameState;
+    private Inventory m_Inventory;
 
     public void Start()
     {
@@ -11,6 +12,8 @@ public class InteractableForgingStation : MonoBehaviour, IInteractable
         {
             Debug.Log("Could not find game state");
         }
+
+        m_Inventory = FindFirstObjectByType<Inventory>();
     }
 
     public void Interact()
@@ -19,6 +22,8 @@ public class InteractableForgingStation : MonoBehaviour, IInteractable
         {
             return;
         }
+
+        m_Inventory.RemoveMoney(1);
 
         m_GameState.state = GameState.State.ForgingStation;
     }
