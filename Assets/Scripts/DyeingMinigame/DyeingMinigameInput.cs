@@ -26,34 +26,24 @@ public class DyeingMinigameInput : MonoBehaviour
         {
             Debug.Log("Could not find primary action");
         }
-        m_PrimaryAction.performed += HandlePrimaryAction;
 
         m_SecondaryAction = m_InputAsset.FindActionMap("Generic").FindAction("Secondary");
         if (m_SecondaryAction == null)
         {
             Debug.Log("Could not find secondary action");
         }
-        m_SecondaryAction.performed += HandleSecondaryAction;
 
         m_TertiaryAction = m_InputAsset.FindActionMap("Generic").FindAction("Tertiary");
         if (m_TertiaryAction == null)
         {
             Debug.Log("Could not find tertiary action");
         }
-        m_TertiaryAction.performed += HandleTertiaryAction;
 
         m_ExitAction = m_InputAsset.FindActionMap("Generic").FindAction("Exit");
         if (m_ExitAction == null)
         {
             Debug.Log("Could not find exit action");
         }
-        m_ExitAction.performed += HandleExitAction;
-    }
-
-    protected void OnDestroy()
-    {
-        m_ExitAction.performed -= HandleExitAction;
-        m_PrimaryAction.performed -= HandlePrimaryAction;
     }
 
     private void OnEnable()
@@ -64,6 +54,13 @@ public class DyeingMinigameInput : MonoBehaviour
         }
 
         m_InputAsset.Enable();
+
+        Start();
+
+        m_PrimaryAction.performed += HandlePrimaryAction;
+        m_SecondaryAction.performed += HandleSecondaryAction;
+        m_TertiaryAction.performed += HandleTertiaryAction;
+        m_ExitAction.performed += HandleExitAction;
     }
 
     private void OnDisable()
@@ -74,6 +71,11 @@ public class DyeingMinigameInput : MonoBehaviour
         }
 
         m_InputAsset.Disable();
+
+        m_ExitAction.performed -= HandleExitAction;
+        m_TertiaryAction.performed -= HandleTertiaryAction;
+        m_SecondaryAction.performed -= HandleSecondaryAction;
+        m_PrimaryAction.performed -= HandlePrimaryAction;
     }
 
     private void HandlePrimaryAction(InputAction.CallbackContext context)

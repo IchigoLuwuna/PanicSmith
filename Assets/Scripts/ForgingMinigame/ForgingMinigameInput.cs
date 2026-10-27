@@ -24,20 +24,12 @@ public class ForgingMinigameInput : MonoBehaviour
         {
             Debug.Log("Could not find primary action");
         }
-        m_PrimaryAction.performed += HandlePrimaryAction;
 
         m_ExitAction = m_InputAsset.FindActionMap("Generic").FindAction("Exit");
         if (m_ExitAction == null)
         {
             Debug.Log("Could not find exit action");
         }
-        m_ExitAction.performed += HandleExitAction;
-    }
-
-    protected void OnDestroy()
-    {
-        m_ExitAction.performed -= HandleExitAction;
-        m_PrimaryAction.performed -= HandlePrimaryAction;
     }
 
     private void OnEnable()
@@ -47,7 +39,12 @@ public class ForgingMinigameInput : MonoBehaviour
             return;
         }
 
+        Start();
+
         m_InputAsset.Enable();
+
+        m_PrimaryAction.performed += HandlePrimaryAction;
+        m_ExitAction.performed += HandleExitAction;
     }
 
     private void OnDisable()
@@ -58,6 +55,9 @@ public class ForgingMinigameInput : MonoBehaviour
         }
 
         m_InputAsset.Disable();
+
+        m_ExitAction.performed -= HandleExitAction;
+        m_PrimaryAction.performed -= HandlePrimaryAction;
     }
 
     private void HandlePrimaryAction(InputAction.CallbackContext context)
