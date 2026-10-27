@@ -20,6 +20,7 @@ public class Inventory : MonoBehaviour
     {
         get { return m_BladeQuality; }
     }
+
     public bool hasHandle
     {
         get { return m_HasHandle; }
@@ -27,6 +28,19 @@ public class Inventory : MonoBehaviour
     public int handleColorID
     {
         get { return m_HandleColorID; }
+    }
+
+    public bool hasSword
+    {
+        get { return m_HasSword; }
+    }
+    public int swordBladeQuality
+    {
+        get { return m_SwordBladeQuality; }
+    }
+    public int swordHandleColorID
+    {
+        get { return m_SwordHandleColorID; }
     }
 
     public void AddSword()
