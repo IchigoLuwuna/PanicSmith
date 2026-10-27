@@ -40,6 +40,8 @@ public class ForgingMinigame : MonoBehaviour
     void OnEnable()
     {
         Reset();
+
+        m_AccumulatedPoints = 0;
     }
 
     void FixedUpdate()
