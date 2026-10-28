@@ -56,6 +56,8 @@ public class PlayerCharacter : BasicCharacter
         }
 
         m_InputAsset.Disable();
+
+        m_MovementBehaviour.desiredMovementDirection = new Vector2(0f, 0f);
     }
 
     private void HandleMovementInput()

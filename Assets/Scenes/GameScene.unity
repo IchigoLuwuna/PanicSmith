@@ -4792,7 +4792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b11f97301a05976429e72792ea50e9d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
-  m_TimerMax: 120
+  m_TimerMax: 150
 --- !u!1001 &4423631737486173996
 PrefabInstance:
   m_ObjectHideFlags: 0
