@@ -26,14 +26,10 @@ public class ForgingMinigameProgressUI : MonoBehaviour
             return;
         }
 
-        SetProgress(m_ForgingMinigame.accumulatedPoints, m_ForgingMinigame.completeThreshold);
-    }
-
-    private void SetProgress(int amount, int needed)
-    {
         if (m_ProgressLabel != null)
         {
-            m_ProgressLabel.text = $"{amount}/{needed}";
+            m_ProgressLabel.text =
+                $"Swings left: {m_ForgingMinigame.swingsLeft}\nQuality: {m_ForgingMinigame.accumulatedPoints}";
         }
     }
 }

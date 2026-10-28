@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 103629183693358171}
   - component: {fileID: 7149749721623558484}
   - component: {fileID: 2805863573932276820}
+  - component: {fileID: 2590297806296923968}
   m_Layer: 5
   m_Name: Red
   m_TagString: Untagged
@@ -252,6 +253,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2590297806296923968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129787856241423125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16400f69d50814a6aa493ec56c874af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyeingMinigameColorDisplay
+  m_ColorID: 0
 --- !u!1 &3934382679518836793
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,6 +277,7 @@ GameObject:
   - component: {fileID: 3731726102444328096}
   - component: {fileID: 2647011916792880462}
   - component: {fileID: 2672506448196009010}
+  - component: {fileID: 5822679356579556603}
   m_Layer: 5
   m_Name: Blue
   m_TagString: Untagged
@@ -327,6 +342,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5822679356579556603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3934382679518836793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16400f69d50814a6aa493ec56c874af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyeingMinigameColorDisplay
+  m_ColorID: 2
 --- !u!1 &5246982451672740431
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,6 +366,7 @@ GameObject:
   - component: {fileID: 1169420771604774592}
   - component: {fileID: 3806432416413060546}
   - component: {fileID: 5603784615824724525}
+  - component: {fileID: 5488242865452433786}
   m_Layer: 5
   m_Name: Green
   m_TagString: Untagged
@@ -402,6 +431,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5488242865452433786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5246982451672740431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16400f69d50814a6aa493ec56c874af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyeingMinigameColorDisplay
+  m_ColorID: 1
 --- !u!1 &6263343913870764052
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,6 +811,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2785ba9183fa1b2b3f714aaeacdc20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DyeingMinigame
+  m_RedDyeTime: 15
+  m_GreenDyeTime: 5
+  m_BlueDyeTime: 10
 --- !u!114 &1980323264933986624
 MonoBehaviour:
   m_ObjectHideFlags: 0

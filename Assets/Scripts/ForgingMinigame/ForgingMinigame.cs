@@ -7,17 +7,19 @@ public class ForgingMinigame : MonoBehaviour
     private ForgingMinigameBarMovement m_ForgingMinigameBarMovement;
     private Inventory m_Inventory;
 
-    [SerializeField]
-    private int m_CompleteThreshold = 20;
-    public int completeThreshold
-    {
-        get { return m_CompleteThreshold; }
-    }
-
     private int m_AccumulatedPoints;
     public int accumulatedPoints
     {
         get { return m_AccumulatedPoints; }
+    }
+
+    [SerializeField]
+    private int m_TotalSwings = 3;
+
+    private int m_SwingsLeft;
+    public int swingsLeft
+    {
+        get { return m_SwingsLeft; }
     }
 
     [SerializeField]
@@ -44,6 +46,7 @@ public class ForgingMinigame : MonoBehaviour
         Reset();
 
         m_AccumulatedPoints = 0;
+        m_SwingsLeft = m_TotalSwings;
     }
 
     void FixedUpdate()
@@ -62,9 +65,9 @@ public class ForgingMinigame : MonoBehaviour
             Reset();
             m_ForgingMinigameBarMovement.Reset();
 
-            if (m_AccumulatedPoints >= m_CompleteThreshold)
+            if (m_SwingsLeft == 0)
             {
-                m_Inventory.AddBlade(m_AccumulatedPoints - m_CompleteThreshold);
+                m_Inventory.AddBlade(m_AccumulatedPoints);
                 m_GameState.state = GameState.State.WorkShop;
                 return;
             }
@@ -92,7 +95,9 @@ public class ForgingMinigame : MonoBehaviour
         }
         m_AccumulatedPoints += accumulator;
 
-        if (m_AccumulatedPoints >= m_CompleteThreshold)
+        --m_SwingsLeft;
+
+        if (m_SwingsLeft == 0)
         {
             m_Countdown = m_FinalCountdown;
         }
