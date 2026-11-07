@@ -44,7 +44,6 @@ public class ForgingMinigameBarHitChecker : MonoBehaviour
         }
 
         int barHitValue = barHit.gameObject.GetComponent<ForgingMinigameTimingBarValue>().value;
-        Debug.Log(barHitValue);
         return barHitValue;
     }
 }

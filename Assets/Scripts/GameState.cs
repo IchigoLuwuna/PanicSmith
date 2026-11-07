@@ -34,7 +34,7 @@ public class GameState : MonoBehaviour
     private GameObject m_DyeingMinigame;
 
     [SerializeField]
-    private int m_Quota = 100;
+    private int m_Quota = 500;
     public int quota
     {
         get { return m_Quota; }
