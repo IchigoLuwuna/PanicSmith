@@ -46,6 +46,9 @@ public class GameState : MonoBehaviour
         set { m_GameWon = value; }
     }
 
+    [SerializeField]
+    private bool m_CheckForGameOver = true;
+
     void Start()
     {
         m_LevelTimer = FindFirstObjectByType<Timer>();
@@ -132,7 +135,7 @@ public class GameState : MonoBehaviour
             SceneManager.LoadScene("WinScene");
         }
 
-        if (m_Inventory.money <= 0)
+        if (m_Inventory.money <= 0 && m_CheckForGameOver)
         {
             m_PlayerHealth.Kill();
 

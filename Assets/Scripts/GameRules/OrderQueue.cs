@@ -27,6 +27,13 @@ public class OrderQueue : MonoBehaviour
 
     private float m_TimeUntilNextOrder = 3f;
 
+    [SerializeField]
+    private bool m_AllowNewOrders = true;
+    public bool allowNewOrders
+    {
+        set { m_AllowNewOrders = value; }
+    }
+
     void Start()
     {
         m_Orders = new List<Order>();
@@ -38,17 +45,31 @@ public class OrderQueue : MonoBehaviour
         const float maxTimeUntilNextOrder = 10f;
         m_TimeUntilNextOrder -= Time.deltaTime;
 
-        if (m_TimeUntilNextOrder <= 0.001f)
+        for (int idx = 0; idx < m_Orders.Count; ++idx)
+        {
+            m_Orders[idx].activeTime += Time.deltaTime;
+        }
+
+        if (m_TimeUntilNextOrder <= 0.001f && m_AllowNewOrders)
         {
             m_TimeUntilNextOrder = Random.Range(minTimeUntilNextOrder, maxTimeUntilNextOrder);
 
             m_Orders.Add(MakeNewOrder());
         }
+    }
 
-        for (int idx = 0; idx < m_Orders.Count; ++idx)
+    public void AddOrder(int color, Order.OrderType type)
+    {
+        float expectedDue = GetExpectedDueFromType(type);
+
+        Order newOrder = new Order()
         {
-            m_Orders[idx].activeTime += Time.deltaTime;
-        }
+            expectedColor = color,
+            orderType = type,
+            expectedDue = expectedDue,
+        };
+
+        m_Orders.Add(newOrder);
     }
 
     public float CompleteOrderAndGetBonusMult(int colorID)
