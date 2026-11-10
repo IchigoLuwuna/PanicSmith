@@ -33,6 +33,13 @@ public class MoneyHUD : MonoBehaviour
             return;
         }
 
-        m_MoneyLabel.text = $"Money\n{m_Inventory.money}/{m_GameState.quota}";
+        string displayString = $"Money\n{m_Inventory.money}/{m_GameState.quota}";
+
+        if (m_Inventory.moneyDiff != 0)
+        {
+            displayString += $"\n+{m_Inventory.moneyDiff}";
+        }
+
+        m_MoneyLabel.text = displayString;
     }
 }

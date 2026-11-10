@@ -13,6 +13,7 @@ public class Inventory : MonoBehaviour
     private int m_SwordHandleColorID;
 
     private int m_Money = 5;
+    private int m_MoneyDiff;
 
     public bool hasBlade
     {
@@ -48,6 +49,11 @@ public class Inventory : MonoBehaviour
     public int money
     {
         get { return m_Money; }
+    }
+
+    public int moneyDiff
+    {
+        get { return m_MoneyDiff; }
     }
 
     public void AddSword()
@@ -95,6 +101,8 @@ public class Inventory : MonoBehaviour
     public void AddMoney(int amount)
     {
         m_Money += amount;
+
+        m_MoneyDiff = amount;
     }
 
     public void RemoveMoney(int amount)

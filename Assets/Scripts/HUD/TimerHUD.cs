@@ -27,13 +27,18 @@ public class TimerHUD : MonoBehaviour
         }
 
         SetTime(m_LevelTimer.time);
+        return;
     }
 
     private void SetTime(float time)
     {
+        int minutes = (int)time / 60;
+        float seconds = time - 60 * minutes;
+
         if (m_TimerLabel != null)
         {
-            m_TimerLabel.text = $"Shift time left\n{time.ToString("#.0")}";
+            m_TimerLabel.text =
+                $"Shift time left\n{minutes.ToString("00")}:{seconds.ToString("00.0")}";
         }
     }
 }
