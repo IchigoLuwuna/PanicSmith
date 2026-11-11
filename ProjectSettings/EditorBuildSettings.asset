@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GameScene.unity
     guid: 78f1bd15bebebbd7f9265b4b2f3a79f7
   - enabled: 1
+    path: Assets/Scenes/NextDayScene.unity
+    guid: 570d6dabbbc1d855bb7fb9d986b98f56
+  - enabled: 1
     path: Assets/Scenes/TutorialScene.unity
     guid: 077f506296f8650bfb05ae8ea5c65fb9
   - enabled: 1

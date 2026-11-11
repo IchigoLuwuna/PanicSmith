@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    [SerializeField]
+    private DataPasser m_DataPasser;
+
     private bool m_HasBlade;
     private int m_BladeQuality;
 
@@ -103,10 +106,20 @@ public class Inventory : MonoBehaviour
         m_Money += amount;
 
         m_MoneyDiff = amount;
+
+        if (m_DataPasser != null)
+        {
+            m_DataPasser.money = m_Money;
+        }
     }
 
     public void RemoveMoney(int amount)
     {
         m_Money -= amount;
+
+        if (m_DataPasser != null)
+        {
+            m_DataPasser.money = m_Money;
+        }
     }
 }

@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
+    [SerializeField]
+    private DataPasser m_DataPasser;
+
     public enum State
     {
         WorkShop,
@@ -69,6 +72,11 @@ public class GameState : MonoBehaviour
         }
 
         m_Inventory = FindFirstObjectByType<Inventory>();
+
+        if (m_DataPasser != null && m_DataPasser.quota != 0)
+        {
+            m_Quota = m_DataPasser.quota;
+        }
     }
 
     // On entering new state
@@ -132,7 +140,7 @@ public class GameState : MonoBehaviour
 
         if (m_GameWon)
         {
-            SceneManager.LoadScene("WinScene");
+            SceneManager.LoadScene("NextDayScene");
         }
 
         if (m_Inventory.money <= 0 && m_CheckForGameOver)
@@ -146,7 +154,7 @@ public class GameState : MonoBehaviour
         {
             if (m_Inventory.money >= m_Quota)
             {
-                SceneManager.LoadScene("WinScene");
+                SceneManager.LoadScene("NextDayScene");
             }
             else
             {

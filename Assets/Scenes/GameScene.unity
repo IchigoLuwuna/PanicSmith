@@ -786,6 +786,16 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7311738580454215286, guid: e7f726a73d8afd9a5a7a9e1dfd435593, type: 3}
   m_PrefabInstance: {fileID: 4125780177484015678}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1048948746 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 567151649274919064, guid: f7854f5a2f7d38828b5dc85a0ea1cfb7, type: 3}
+  m_PrefabInstance: {fileID: 2083482412577303587}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1249609612 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8810852053023817491, guid: 0cb45f9d3360e4d09833011573f63908, type: 3}
+  m_PrefabInstance: {fileID: 4962948718555086529}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1340312715
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,6 +1107,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2168948641290588408, guid: 0cb45f9d3360e4d09833011573f63908, type: 3}
   m_PrefabInstance: {fileID: 4962948718555086529}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1542926643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249609612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6887e97b6e43c1fb486d2b8a35686315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DataPasser
 --- !u!1 &1714880998
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,6 +1157,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4632408008964252180, guid: f7854f5a2f7d38828b5dc85a0ea1cfb7, type: 3}
   m_PrefabInstance: {fileID: 2083482412577303587}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1829632107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048948746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6887e97b6e43c1fb486d2b8a35686315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DataPasser
 --- !u!1 &1959595251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1479,6 +1513,14 @@ PrefabInstance:
       value: Game State
       objectReference: {fileID: 0}
     - target: {fileID: 1492994220947476066, guid: f7854f5a2f7d38828b5dc85a0ea1cfb7, type: 3}
+      propertyPath: m_Quota
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1492994220947476066, guid: f7854f5a2f7d38828b5dc85a0ea1cfb7, type: 3}
+      propertyPath: m_DataPasser
+      value: 
+      objectReference: {fileID: 1829632107}
+    - target: {fileID: 1492994220947476066, guid: f7854f5a2f7d38828b5dc85a0ea1cfb7, type: 3}
       propertyPath: m_DyeingMinigame
       value: 
       objectReference: {fileID: 637097525}
@@ -1529,7 +1571,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 567151649274919064, guid: f7854f5a2f7d38828b5dc85a0ea1cfb7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1829632107}
   m_SourcePrefab: {fileID: 100100000, guid: f7854f5a2f7d38828b5dc85a0ea1cfb7, type: 3}
 --- !u!1001 &2595270633767366977
 PrefabInstance:
@@ -1997,10 +2042,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: OrderQueue
       objectReference: {fileID: 0}
+    - target: {fileID: 9062462097829614607, guid: 0cb45f9d3360e4d09833011573f63908, type: 3}
+      propertyPath: m_DataPasser
+      value: 
+      objectReference: {fileID: 1542926643}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8810852053023817491, guid: 0cb45f9d3360e4d09833011573f63908, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1542926643}
   m_SourcePrefab: {fileID: 100100000, guid: 0cb45f9d3360e4d09833011573f63908, type: 3}
 --- !u!1001 &7167602843167753014
 PrefabInstance:
@@ -2010,6 +2062,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 151359692}
     m_Modifications:
+    - target: {fileID: 1404234104364361486, guid: f5167c6aa5b969951a1130d3db0287d3, type: 3}
+      propertyPath: m_TimerMax
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 4289469901549756714, guid: f5167c6aa5b969951a1130d3db0287d3, type: 3}
       propertyPath: m_Name
       value: Timer

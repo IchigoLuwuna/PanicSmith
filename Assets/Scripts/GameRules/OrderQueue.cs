@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class OrderQueue : MonoBehaviour
 {
+    [SerializeField]
+    private DataPasser m_DataPasser;
+
     public class Order
     {
         public enum OrderType
@@ -90,6 +93,11 @@ public class OrderQueue : MonoBehaviour
         if (completedOrder.activeTime >= 2f * completedOrder.expectedDue)
         {
             return 0f;
+        }
+
+        if (m_DataPasser != null)
+        {
+            ++m_DataPasser.ordersCompleted;
         }
 
         float multiplier = 1f;
