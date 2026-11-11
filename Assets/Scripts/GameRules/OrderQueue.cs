@@ -87,7 +87,7 @@ public class OrderQueue : MonoBehaviour
         m_Orders.RemoveAt(idx);
 
         // Too late
-        if (completedOrder.activeTime == 2f * completedOrder.expectedDue)
+        if (completedOrder.activeTime >= 2f * completedOrder.expectedDue)
         {
             return 0f;
         }
