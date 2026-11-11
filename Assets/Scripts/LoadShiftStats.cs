@@ -10,6 +10,9 @@ public class LoadShiftStats : MonoBehaviour
     [SerializeField]
     private DataPasser m_DataPasser;
 
+    [SerializeField]
+    private GameObject m_NextShiftButton;
+
     private float m_Time;
 
     private int m_StatsShown;
@@ -41,6 +44,11 @@ public class LoadShiftStats : MonoBehaviour
             ++m_StatsShown;
             m_StatsLabel.text =
                 $"Profit: {m_DataPasser.money}\nOrders Completed: {m_DataPasser.ordersCompleted}\nNew Quota: {m_DataPasser.quota}";
+        }
+        if (m_Time >= timeBetweenStats * 4 && m_StatsShown == 3)
+        {
+            ++m_StatsShown;
+            m_NextShiftButton.SetActive(true);
         }
     }
 }

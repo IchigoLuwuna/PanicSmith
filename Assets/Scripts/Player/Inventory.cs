@@ -59,6 +59,19 @@ public class Inventory : MonoBehaviour
         get { return m_MoneyDiff; }
     }
 
+    void Start()
+    {
+        if (m_DataPasser == null)
+        {
+            return;
+        }
+
+        if (m_DataPasser.money != 0)
+        {
+            m_Money = m_DataPasser.money;
+        }
+    }
+
     public void AddSword()
     {
         if (!m_HasBlade || !m_HasHandle)
