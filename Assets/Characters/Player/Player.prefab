@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 4051404790229349838}
   - component: {fileID: 4112199467101022991}
   - component: {fileID: 5512054696485085258}
+  - component: {fileID: 3352291700323441066}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -260,3 +261,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6887e97b6e43c1fb486d2b8a35686315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DataPasser
+--- !u!81 &3352291700323441066
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2625147127512836649}
+  m_Enabled: 1

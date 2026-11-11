@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class CombiningStation : MonoBehaviour, IInteractable
 {
+    [SerializeField]
+    private AudioSource m_HammerSFX;
+
     private Inventory m_Inventory;
 
     void Start()
@@ -11,6 +14,10 @@ public class CombiningStation : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        m_Inventory.AddSword();
+        if (m_Inventory.hasBlade && m_Inventory.hasHandle)
+        {
+            m_HammerSFX.Play();
+            m_Inventory.AddSword();
+        }
     }
 }

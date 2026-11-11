@@ -73,9 +73,17 @@ public class GameState : MonoBehaviour
 
         m_Inventory = FindFirstObjectByType<Inventory>();
 
-        if (m_DataPasser != null && m_DataPasser.quota != 0)
+        if (m_DataPasser == null)
+        {
+            return;
+        }
+        if (m_DataPasser.quota != 0)
         {
             m_Quota = m_DataPasser.quota;
+        }
+        else
+        {
+            m_DataPasser.quota = m_Quota;
         }
     }
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// Central way to pass data between scenes
 public class DataPasser : MonoBehaviour
 {
     private static int m_Money;

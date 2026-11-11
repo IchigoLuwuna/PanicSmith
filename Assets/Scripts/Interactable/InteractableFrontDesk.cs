@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class InteractableFrontDesk : MonoBehaviour, IInteractable
 {
+    [SerializeField]
+    private AudioSource m_MoneySFX;
+
     private Inventory m_Inventory;
     private OrderQueue m_OrderQueue;
 
@@ -27,5 +30,10 @@ public class InteractableFrontDesk : MonoBehaviour, IInteractable
 
         m_Inventory.RemoveSword();
         m_Inventory.AddMoney(money);
+
+        if (money != 0)
+        {
+            m_MoneySFX.Play();
+        }
     }
 }

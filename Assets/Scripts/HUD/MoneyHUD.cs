@@ -10,6 +10,8 @@ public class MoneyHUD : MonoBehaviour
     private Inventory m_Inventory;
     private GameState m_GameState;
 
+    private bool m_MoneyGainStarted;
+
     void Start()
     {
         m_Inventory = FindFirstObjectByType<Inventory>();
@@ -37,7 +39,12 @@ public class MoneyHUD : MonoBehaviour
 
         if (m_Inventory.moneyDiff != 0)
         {
+            m_MoneyGainStarted = true;
             displayString += $"\n+{m_Inventory.moneyDiff}";
+        }
+        if (m_Inventory.moneyDiff == 0 && m_MoneyGainStarted)
+        {
+            displayString += $"\nOrder Failed";
         }
 
         m_MoneyLabel.text = displayString;

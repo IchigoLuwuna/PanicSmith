@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class ForgingMinigame : MonoBehaviour
 {
+    [SerializeField]
+    private AudioSource m_HammerSFX;
+
     private GameState m_GameState;
     private ForgingMinigameBarHitChecker m_ForgingMinigameBarHitChecker;
     private ForgingMinigameBarMovement m_ForgingMinigameBarMovement;
@@ -82,6 +85,8 @@ public class ForgingMinigame : MonoBehaviour
 
     public void PrimaryAction()
     {
+        m_HammerSFX.Play();
+
         m_ForgingMinigameBarMovement.Stop();
         int accumulator = m_ForgingMinigameBarHitChecker.Check();
 
